@@ -6,11 +6,14 @@ phases:
       docker: 18
   pre_build:
     commands:
+      - echo start prebuild
       - aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com
       - REPO=$(aws ecr describe-repositories --repository-names terraform-lesson-dev-ecr --output text --query "repositories[0].repositoryUri")
       - IMAGE=$REPO:latest
   build:
     commands:
+      - echo Build started on `date`
+      - echo Building the Docker image...
       - docker build -t $IMAGE .
       - docker push $IMAGE
     post_build:
