@@ -11,6 +11,6 @@ class GreetingController {
     @GetMapping("/greeting/{name}")
     fun greeting(@PathVariable name: String) = GreetingResponse(
         datetime = LocalDateTime.now(),
-        message = "Hello, $name!"
+        message = "GoodMorning, $name!"
     )
 }
