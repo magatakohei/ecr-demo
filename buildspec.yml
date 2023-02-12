@@ -23,6 +23,6 @@ phases:
       - docker push $IMAGE
   post_build:
     commands:
-      - printf '[{"name":"terraform-lesson-dev-ecr","iamgeUri":"%s"}]' $IMAGE > imagedefinition.json
+      - printf '[{"name":"terraform-lesson-dev-ecr","imageUri":"%s"}]' $IMAGE > imagedefinition.json
 artifacts:
   files: imagedefinition.json
